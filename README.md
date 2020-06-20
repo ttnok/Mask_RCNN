@@ -9,4 +9,4 @@
 
 * Google Colab 用 demo
   [demo_jp_colab.ipynb](samples/demo_jp_colab.ipynb)
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ttnok/Mask_RCNN_forked/samples/demo_jp_colab.ipynb]
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ttnok/Mask_RCNN_forked/blob/master/samples/demo_jp_colab.ipynb)
