@@ -48,7 +48,8 @@ def display_images(images, titles=None, cols=4, cmap=None, norm=None,
     i = 1
     for image, title in zip(images, titles):
         plt.subplot(rows, cols, i)
-        plt.title(title, fontsize=9)
+        # plt.title(title, fontsize=9)
+        plt.title(title)
         plt.axis('off')
         plt.imshow(image.astype(np.uint8), cmap=cmap,
                    norm=norm, interpolation=interpolation)
@@ -143,8 +144,10 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             caption = "{} {:.3f}".format(label, score) if score else label
         else:
             caption = captions[i]
+        # ax.text(x1, y1 + 8, caption,
+        #         color='w', size=11, backgroundcolor="none")
         ax.text(x1, y1 + 8, caption,
-                color='w', size=11, backgroundcolor="none")
+                color='w', backgroundcolor="none")
 
         # Mask
         mask = masks[:, :, i]
@@ -249,8 +252,10 @@ def draw_rois(image, rois, refined_rois, mask, class_ids, class_names, limit=10)
 
             # Label
             label = class_names[class_id]
+            # ax.text(rx1, ry1 + 8, "{}".format(label),
+            #         color='w', size=11, backgroundcolor="none")
             ax.text(rx1, ry1 + 8, "{}".format(label),
-                    color='w', size=11, backgroundcolor="none")
+                    color='w', backgroundcolor="none")
 
             # Mask
             m = utils.unmold_mask(mask[id], rois[id]
@@ -347,9 +352,12 @@ def plot_overlaps(gt_class_ids, pred_class_ids, pred_scores,
         color = ("white" if overlaps[i, j] > thresh
                  else "black" if overlaps[i, j] > 0
                  else "grey")
+        # plt.text(j, i, "{:.3f}\n{}".format(overlaps[i, j], text),
+        #          horizontalalignment="center", verticalalignment="center",
+        #          fontsize=9, color=color)
         plt.text(j, i, "{:.3f}\n{}".format(overlaps[i, j], text),
                  horizontalalignment="center", verticalalignment="center",
-                 fontsize=9, color=color)
+                 color=color)
 
     plt.tight_layout()
     plt.xlabel("Ground Truth")
@@ -435,7 +443,11 @@ def draw_boxes(image, boxes=None, refined_boxes=None,
             # If there are refined boxes, display captions on them
             if refined_boxes is not None:
                 y1, x1, y2, x2 = ry1, rx1, ry2, rx2
-            ax.text(x1, y1, caption, size=11, verticalalignment='top',
+            # ax.text(x1, y1, caption, size=11, verticalalignment='top',
+            #         color='w', backgroundcolor="none",
+            #         bbox={'facecolor': color, 'alpha': 0.5,
+            #               'pad': 2, 'edgecolor': 'none'})
+            ax.text(x1, y1, caption, verticalalignment='top',
                     color='w', backgroundcolor="none",
                     bbox={'facecolor': color, 'alpha': 0.5,
                           'pad': 2, 'edgecolor': 'none'})
